@@ -1,13 +1,12 @@
 package com.controller;
 
-import java.util.Map;
-
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.record.MessageResponse;
 import com.record.SendOtpRequest;
 
 import jakarta.validation.Valid;
@@ -19,7 +18,7 @@ public class AuthController {
 			path = "/send-otp",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, String> sendOtp(@Valid @RequestBody SendOtpRequest request) {
-		return Map.of("message", "Hello " + request.userName() + " from Auth TestController");
+	public MessageResponse sendOtp(@Valid @RequestBody SendOtpRequest request) {
+		return MessageResponse.sendOtpMessageGeneric();
 	}
 }
